@@ -33,6 +33,10 @@ public class Participante {
     @JsonManagedReference
     private List<Inscricao> inscricoes;
 
+    // Construtor padrão obrigatório para o JPA
+    public Participante() {
+    }
+
     @PrePersist
     protected void onCreate() {
         this.createdAt = LocalDateTime.now();
@@ -42,5 +46,63 @@ public class Participante {
     @PreUpdate
     protected void onUpdate() {
         this.updatedAt = LocalDateTime.now();
+    }
+
+    // --- GETTERS E SETTERS ---
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public PreferenciaAcessibilidade getPreferenciaAcessibilidade() {
+        return preferenciaAcessibilidade;
+    }
+
+    public void setPreferenciaAcessibilidade(PreferenciaAcessibilidade preferenciaAcessibilidade) {
+        this.preferenciaAcessibilidade = preferenciaAcessibilidade;
+    }
+
+    public List<Inscricao> getInscricoes() {
+        return inscricoes;
+    }
+
+    public void setInscricoes(List<Inscricao> inscricoes) {
+        this.inscricoes = inscricoes;
     }
 }

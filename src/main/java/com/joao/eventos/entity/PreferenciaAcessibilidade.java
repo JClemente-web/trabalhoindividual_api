@@ -11,17 +11,28 @@ public class PreferenciaAcessibilidade {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "necessita_interprete_libras")
-    private Boolean necessitaInterpreteLibras = false;
+    @Column(nullable = false)
+    private String tipoAcessibilidade;
 
-    @Column(name = "necessita_cadeira_rodas")
-    private Boolean necessitaCadeiraRodas = false;
-
-    @Column(name = "outras_necessidades", columnDefinition = "TEXT")
-    private String outrasNecessidades;
+    @Column
+    private String descricao;
 
     @OneToOne
-    @JoinColumn(name = "participante_id", nullable = false)
+    @JoinColumn(name = "participante_id", nullable = false, unique = true)
     @JsonBackReference
     private Participante participante;
+
+    public PreferenciaAcessibilidade() {}
+
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+
+    public String getTipoAcessibilidade() { return tipoAcessibilidade; }
+    public void setTipoAcessibilidade(String tipoAcessibilidade) { this.tipoAcessibilidade = tipoAcessibilidade; }
+
+    public String getDescricao() { return descricao; }
+    public void setDescricao(String descricao) { this.descricao = descricao; }
+
+    public Participante getParticipante() { return participante; }
+    public void setParticipante(Participante participante) { this.participante = participante; }
 }
